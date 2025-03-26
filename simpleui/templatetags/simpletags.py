@@ -14,7 +14,7 @@ from django import template
 from django.core.serializers.json import DjangoJSONEncoder
 from django.db import models
 from django.urls import reverse
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 from django.utils.functional import Promise
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
@@ -41,7 +41,7 @@ class LazyEncoder(DjangoJSONEncoder):
 
     def default(self, obj):
         if isinstance(obj, Promise):
-            return force_text(obj)
+            return force_str(obj)
         return super(LazyEncoder, self).default(obj)
 
 
