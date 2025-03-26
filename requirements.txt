@@ -1,5 +1,6 @@
 amqp
-anyjson
+setuptools==50.3.2
+anyjson==0.3.3
 asgiref
 backports.csv
 billiard
