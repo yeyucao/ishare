@@ -108,6 +108,10 @@ TEMPLATES = [
                 'blog.my_context_processors.links',
                 # 'blog.my_context_processors.valine',
             ],
+            # 添加下面内容
+            'libraries': {  # Adding this section should work around the issue.
+                'staticfiles': 'django.templatetags.static',
+            },
         },
     },
 ]
@@ -297,20 +301,20 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = not DEBUG
 # class to serialize session data
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
 # 基于cache的缓存: redis
-SESSION_ENGINE = "django.contrib.sessions.backends.cache"
-DJANGO_REDIS_IGNORE_EXCEPTIONS = True  # 忽略异常
+# SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+# DJANGO_REDIS_IGNORE_EXCEPTIONS = True  # 忽略异常
 
 LOGOUT_REDIRECT_URL = '/'
 CSRF_USE_SESSIONS = True
 
 # celery配置
-CELERY_BROKER_URL = BROKER_URL = 'redis://:lujianxin.com@127.0.0.1:6379/2'
-CELERY_RESULT_BACKEND = 'redis://:lujianxin.com@127.0.0.1:6379/3'
-CELERY_CACHE_BACKEND = 'django-cache'
-BROKER_TRANSPORT_OPTIONS = {
-    'visibility_timeout': 3600,
-    'fanout_prefix': True,
-}
+# CELERY_BROKER_URL = BROKER_URL = 'redis://:lujianxin.com@127.0.0.1:6379/2'
+# CELERY_RESULT_BACKEND = 'redis://:lujianxin.com@127.0.0.1:6379/3'
+# CELERY_CACHE_BACKEND = 'django-cache'
+# BROKER_TRANSPORT_OPTIONS = {
+#     'visibility_timeout': 3600,
+#     'fanout_prefix': True,
+# }
 
 # ----------本站系统所用email配置----------
 SERVER_EMAIL = 'admin@imseek.cn'
